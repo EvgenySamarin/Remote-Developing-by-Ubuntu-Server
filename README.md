@@ -53,8 +53,10 @@ set number
 set mouse=a
 
 " Табуляция в 2 пробела
+set expandtab
 set tabstop=2 
 
 set hlsearch "подсветка поиска
 set incsearch "инкрементальный поиск
 ```
+На этом пока всё - пошел изучать настройку сервера 
