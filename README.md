@@ -55,6 +55,14 @@ call plug#end()
 ```
 Теперь можно в 1 короткую строку устанавливать любой понравившийся плагин из github, помещая имя плагина между begin и end
 
+#### Плагинчики:
+[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe#linux-64-bit) - автозавершение текста на основе введенных тобой данных инструкция по установке:
+1. - Установи плагин через vim-plug 
+2. - Выполни след ряд комманд:
+> $ sudo apt install build-essential cmake python3-dev
+> $ cd ~/.vim/bundle/YouCompleteMe
+> $ python3 install.py --java-completer
+
 ### Файл настройки vim используемый мной.
 На Ubuntu vimrc располагается в директории ~/.vimrc
 
