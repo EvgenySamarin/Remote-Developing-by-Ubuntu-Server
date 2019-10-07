@@ -173,4 +173,31 @@ class Test {
 
 Чтож, после установки jdk, плагинов для vim из 5 gb у нас осталось 420 мб. Достаточно много для чистого консольного коддинга на Java.
 
-Попробуем теперь набросить Kotlin и посмотрим 
+## Шаг пятый - установка Kotlin
+Попробуем теперь набросить Kotlin и посмотрим [установка kotlin](https://www.cyberciti.biz/faq/how-to-install-kotlin-programming-language-on-ubuntudebian-linux/) вкратце:
+> $ sudo apt install unzip
+
+> $ sudo apt install zip
+
+> $ wget -O sdk.install.sh "https://get.sdkman.io"
+
+Можно посмотерть чего мы там скачали (для особо недоверчивых):
+> $ vim sdk.install.sh
+
+> $ bash sdk.install.sh
+
+> $ source ~/.sdkman/bin/sdkman-init.sh
+
+> $ sdk install kotlin
+
+Готово, теперь мы можем писать программы и на котлин (правда без автокомплита, для этого нужно будет поискать необходимый плагин для VIM YCM.
+Компилирование котлин файлов:
+> $ kotlinc <имя файла>.kt -include-runtime -d <имя файла>.jar
+
+Запуск скомпилированной программы:
+> $ java -jar <имя файла>.jar
+
+После установки kotlin свободного места осталось: __315mb.__ 
+
+## Шаг шестой. Установка сборщика пакетов
+Чтобы не заниматься ручной компиляцией, необходимо установить сборщик пакетов. Я выберу тот что использую для android studio на работе - gradle
