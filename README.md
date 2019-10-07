@@ -85,13 +85,26 @@ call plug#end()
 
 call plug#begn('~/.vim/plugged')
 
+Plug 'joshdick/onedark.vim' " классная цветовая тема для vim
+Plug 'vim-airline/vim-airline' " поддержка строки статуса
+Plug 'scrooloose/nerdtree' {'on': 'NERDTreeToggle'} " поддержка дерева файлов проекта
+Plug 'udalov/kotlin-vim' " поддержка подсветки синтаксиса kotlin
+Plug 'ycm-core/YouCompleteMe' " автозавершение текста
+Plug 'jiangmiao/auto-pairs' " автоматические парные скобки и кавычки
+
 call plug#end()
 
+let g:onedark_hide_endofbuffer=1 " отключаем бесящие символы ~ вначале каждой пустой строки
+colorscheme onedark " включаем скачанную тему
+
+syntax on " подсветка синтаксиса
 set number " нумерация строк
 set mouse=a " Поддержка мышки - фиг тебе а не мышь - эта строка не работает в консольном режиме
 set expandtab "пробел вместо символа /t
 set tabstop=2 " Табуляция в 2 пробела
 set hlsearch "подсветка поиска
 set incsearch "инкрементальный поиск
+
+map <C-n> : NERDTreeToggle<CR> " завязываем сочетание клавиш ctrl+N на открытие окна дерева проекта
 ```
 На этом пока всё - пошел изучать настройку сервера 
