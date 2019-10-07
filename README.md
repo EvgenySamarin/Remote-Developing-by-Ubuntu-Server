@@ -87,15 +87,20 @@ call plug#begn('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim' " классная цветовая тема для vim
 Plug 'vim-airline/vim-airline' " поддержка строки статуса
+Plug 'vim-airline/vim-airline-themes' " темизация строки статуса
 Plug 'scrooloose/nerdtree' {'on': 'NERDTreeToggle'} " поддержка дерева файлов проекта
 Plug 'udalov/kotlin-vim' " поддержка подсветки синтаксиса kotlin
 Plug 'ycm-core/YouCompleteMe' " автозавершение текста
 Plug 'jiangmiao/auto-pairs' " автоматические парные скобки и кавычки
+Plug 'tpope/vim-fugitive' " включаем нативную поддержку git
+Plug 'airblade/vim-gitgutter' " поддержка столбца иконок изменения файла для git
 
 call plug#end()
 
+let g:airline_theme='base16_spacemacs' " если сервер не поддерживает 24 бита, чтоб не шакалило строку статуса
+let g:onedark_termcolors=16 " если сервер не поддерживает 24 бита, чтоб не шакалило тему onedark
 let g:onedark_hide_endofbuffer=1 " отключаем бесящие символы ~ вначале каждой пустой строки
-colorscheme onedark " включаем скачанную тему
+colorscheme onedark " включаем скаченную тему
 
 syntax on " подсветка синтаксиса
 set number " нумерация строк
