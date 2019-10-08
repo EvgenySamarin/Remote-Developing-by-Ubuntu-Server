@@ -120,6 +120,7 @@ Plug 'ycm-core/YouCompleteMe' " автозавершение текста
 Plug 'jiangmiao/auto-pairs' " автоматические парные скобки и кавычки
 Plug 'tpope/vim-fugitive' " включаем нативную поддержку git
 Plug 'airblade/vim-gitgutter' " поддержка столбца иконок изменения файла для git
+Plug 'sheerun/vim-polyglot' " поддержка синтаксиса огромного кол-ва языков
 
 call plug#end()
 
