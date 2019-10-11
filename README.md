@@ -67,7 +67,24 @@
 скопировать его на удаленный сервер:
 > $ ssh-copy-id -p 443 user@server 
 
-Чудесненько, теперь можно авторизоваться на сервере без ввода пароля!
+Чудесненько, теперь можно авторизоваться на сервере без ввода пароля. Стоп, мы же программисты - ленивые люди, давай пойдем дальше сократим подключение к vds до команды `ssh vds`. Это возможно сделать [используя alias`ы`](https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/). 
+Создаем файл конфигурации ssh
+> $ vim ~/.ssh/config
+
+добавляем туда след конструкцию:
+```ssh
+## Вместо vds можно использовать любое слово
+Host vds
+    HostName <тут ip твоего сервера>
+    Port <указанный тобой порт>
+    User <созданный тобой пользователь на сервере>
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/id_rsa
+```
+Теперь подключиться к серверу можно командой 
+> $ ssh vds
+
+Ну разве не чудо?
 
 Также следует установить __git__, практически каждый разработчик плагинов или open source комманда использует VCS Git, в частности GitHub для распространения своих работ.
 > $ sudo apt install git
@@ -144,7 +161,7 @@ call plug#end()
 "
 " for Unix and OS/2:  ~/.vimrc
 
-call plug#begn('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'joshdick/onedark.vim' " классная цветовая тема для vim
 Plug 'vim-airline/vim-airline' " поддержка строки статуса
