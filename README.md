@@ -89,6 +89,11 @@ Host vds
 Также следует установить __git__, практически каждый разработчик плагинов или open source команда использует VCS Git, в частности GitHub для распространения своих работ.
 > $ sudo apt install git
 
+Ну и в довесок, устанавливаем архиватор и раз-архиватор. Они нам пригодятся в будущем, для установки модулей.
+> $ sudo apt install unzip
+
+> $ sudo apt install zip
+
 ### Установка Java Virtual Machine
 Параллельно с прохождением курсов по vim, необходимо установить JDK. Java программисту нужна Java машина. [тутор по java install](https://help.ubuntu.ru/wiki/java)
 
@@ -224,10 +229,8 @@ class Test {
 
 ## Шаг пятый - установка Kotlin
 Попробуем теперь набросить Kotlin и посмотрим [установка kotlin](https://www.cyberciti.biz/faq/how-to-install-kotlin-programming-language-on-ubuntudebian-linux/) вкратце:
-> $ sudo apt install unzip
 
-> $ sudo apt install zip
-
+Качаем устанавливатель kotlin
 > $ wget -O sdk.install.sh "https://get.sdkman.io"
 
 Можно посмотреть, чего мы там скачали (для особо недоверчивых):
@@ -251,7 +254,7 @@ class Test {
 В целом этого уже достаточно для рефакторинга существующих проектов. Тянем репозиторий - редактируем проект.
 
 ## Шаг шестой. Если ты android разработчик
-Для андроид разработки нам необходимо затянуть на сервер android sdk [отличный sh скрипт по установке](https://gist.github.com/zhy0/66d4c5eb3bcfca54be2a0018c3058931) - и тут у нас возникают сложности. Свободного места не хватает даже на зажатый sdk tools. И тут уже почва для размышлений. Очевидно самый дешевый тариф нам не подходит, следующий по стоимости тариф:
+Для андроид разработки нам необходимо затянуть на сервер android sdk [отличный sh скрипт по установке](https://gist.github.com/zhy0/66d4c5eb3bcfca54be2a0018c3058931) - и тут у нас возникают сложности. Свободного места не хватает даже на зажатый sdk tools. Очевидно самый дешевый тариф VDS нам не подходит, следующий по стоимости тариф:
 SimpleCloud 250 р./мес.:
 
 - 1GB RAM
@@ -265,4 +268,40 @@ DigitalOcean 5$(350р.)/мес.:
 - 1 TB
 - 25 GB
 
-Ок, если мы хотим продолжить - нам придется пересоздавать виртуальную машину под новые параметры.
+Ок, если мы хотим продолжить - нам придется пересоздавать виртуальную машину под новые параметры, иначе, если ты обратил внимание на моё предупреждение вначале - у тебя уже машинка с 20 Gb.
+
+### Установка sdk:
+Скачиваем какой-нибудь sdk tools пакет с сайта [developer android](https://developer.android.com/studio/index.html#downloads) в директорию `$HOME`
+> $ cd ~; wget https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+
+Распаковываем архив (_после распаковки скачанный архив можно удалить_):
+> $ tar xf android-sdk*-linux.tgz
+
+Переходим в распакованный архив в каталог tools и запускаем обновление компонентов, с параллельной установкой актуального sdk:
+> $ cd android-sdk-linux/tools; ./android update sdk --all --no-ui --filter $(seq -s, 29)
+
+Если тебе нужна какая-то спец версия sdk можно узнать какие из версий доступны след образом (в директории tools):
+> $ ./android list sdk --all
+
+Установить определённые пакеты можно с помощью команды:
+> $ ./android update sdk --no-ui --all --filter 1,2,3,<...>,N
+
+Где N - номер пакета
+
+Теперь прописываем переменные окружения для `ANDROID_HOME, PATH`
+> $ echo 'export ANDROID_HOME=$HOME/android-sdk-linux' >> ~/.bashrc
+
+> $ echo 'export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools' >> ~/.bashrc
+
+Перечитываем настройки переенных:
+> $ source ~/.bashrc
+
+Добавляем в систему возможность исполнять i386 файлы (актуально для x64 архитектур)
+> $ sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get install -y libc6:i386 libstdc++6:i386 zlib1g:i386
+
+### Ускорение компиляции и сборки проектов
+На нашем сервере всего 1gb  ОЗУ, а значит нам потребуется swap:
+> $ sudo fallocate -l 2G /swapfile; sudo chmod 600 /swapfile; sudo mkswap /swapfile; sudo swapon /swapfile
+
+Не секрет, что андроид приложения используют системы сборки проектов, самая популярная Gradle, запуск gradle тоже можно ускорить, создав фоновый процесс build системы:
+> $ mkdir ~/.gradle; echo 'org.gradle.daemon=true' >> ~/.gradle/gradle.properties
