@@ -141,7 +141,7 @@ export PATH=/usr/lib/jvm/default-java/bin:$PATH
 
 В ~/.vimrc добавляем:
 ```vim
-call plug#begn('~/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 call plug#end()
 ```
