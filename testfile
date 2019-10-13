@@ -1,0 +1,7 @@
+#тестовый файл - потренеруемся на нём менять значение переменных
+line 1
+Line 3
+# comment line
+line_7 yes
+## double comment
+endfile
