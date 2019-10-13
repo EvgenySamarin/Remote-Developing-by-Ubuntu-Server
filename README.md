@@ -110,7 +110,7 @@ Host vds
 
 Добавляем в конец файла строки:
 
-export JAVA_HOME=$JAVA_HOME:/usr/lib/jvm/default-java/bin/java
+export JAVA_HOME=$JAVA_HOME:/usr/lib/jvm/default-java/
 
 export PATH=/usr/lib/jvm/default-java/bin:$PATH
 
