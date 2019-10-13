@@ -110,9 +110,10 @@ Host vds
 
 Добавляем в конец файла строки:
 
+```sh
 export JAVA_HOME=$JAVA_HOME:/usr/lib/jvm/default-java/
-
 export PATH=/usr/lib/jvm/default-java/bin:$PATH
+```
 
 Сохраняем и закрываем. Теперь перечитаем файл настроек, чтобы их применить:
 > $ source /etc/profile
