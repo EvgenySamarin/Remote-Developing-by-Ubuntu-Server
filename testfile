@@ -4,5 +4,8 @@
 "replacement line no"
 "replacement line no"
 "replacement line no"
-Port 44
+Port 2
 "replacement line no"
+new line in file
+export JAVA_HOME=$JAVA_HOME:/usr/lib/jvm/default-java/
+export PATH=/usr/lib/jvm/default-java/bin:$PATH

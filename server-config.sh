@@ -46,4 +46,11 @@ apt install unzip
 apt-get install default-jdk
 
 # устанавливаем переменные окружения
+echo "export JAVA_HOME=\$JAVA_HOME:/usr/lib/jvm/default-java/" >> /etc/profile
+echo "export PATH=/usr/lib/jvm/default-java/bin:\$PATH" >> /etc/profile
 
+# применяем настройки
+source /etc/profile
+
+# завершаем работу скрипта и устанавливаем флаг успешного выполнения
+exit 0

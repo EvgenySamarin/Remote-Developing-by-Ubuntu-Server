@@ -9,3 +9,6 @@ sed -i $var's/.*/Port '$port'/' testfile
 
 echo "Новый файл:"
 cat testfile | grep Port
+
+echo "export JAVA_HOME=\$JAVA_HOME:/usr/lib/jvm/default-java/" >> testfile
+echo "export PATH=/usr/lib/jvm/default-java/bin:\$PATH" >> testfile
