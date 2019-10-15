@@ -347,4 +347,4 @@ DigitalOcean 5$(350р.)/мес.:
 - [sh скрипт для быстрой настройки vim](vim-config.sh)
 - [sh скрипт для быстрой установки kotlin](kotlin-android-config.sh)
 - [sh скрипт для быстрой настройки gradle](vim-config.sh)
-- sh скрипт для быстрой настройки клиента __В разработке__
+- [sh скрипт для быстрой настройки клиента](client-config.sh)
