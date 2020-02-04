@@ -20,3 +20,5 @@ cd ~/.vim/plugged/YouCompleteMe
 
 # Настраиваем компилятор Java
 python3 install.py --java-completer
+
+exit 0
